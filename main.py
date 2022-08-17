@@ -1,9 +1,6 @@
 import tkinter as tk
-import os
 from tkinter import filedialog
 from PIL import Image, ImageTk, ImageFont, ImageDraw
-import matplotlib.pyplot as plt
-
 
 window = tk.Tk()
 window.title("Watermarker")
@@ -27,13 +24,9 @@ def display_image(img):
 def add_watermark(watermark):
     if isinstance(watermark, str):
         global image
-        #image = ImageTk.getimage(image)
         draw = ImageDraw.Draw(image)
         draw.text((0, 0), watermark,
                   (255, 255, 255), font=font)
-        #imagepil.show()
-        #plt.imshow(imagepil)
-
         display_image(image)
 
 
@@ -50,10 +43,8 @@ def upload_file(kind='main image'):
 
 
 def save_image():
-    global image
     fp = filedialog.asksaveasfilename()
-    imagepil = ImageTk.getimage(image)
-    imagepil.save(fp)
+    image.save(fp)
 
 
 inputtxt = tk.Text(window,
